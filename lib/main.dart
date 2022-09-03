@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quick_chat/constants.dart';
+import 'package:quick_chat/screens/login/login-screen.dart';
 import 'package:quick_chat/screens/welcome/welcome_screen.dart';
 
 void main() {
@@ -18,9 +19,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: Colors.white,
-        
       ),
       home: WelcomeScreen(),
+      routes: {
+        LoginScreen.routeName:(context) => LoginScreen(),
+      },
     );
   }
 }
