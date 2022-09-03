@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quick_chat/components/rounded_button.dart';
 import 'package:quick_chat/constants.dart';
+import 'package:quick_chat/screens/signup/signup_screen.dart';
 
 import '../../../components/already_account_check.dart';
+import '../../../components/text_field_container.dart';
 import 'background.dart';
 
 class Body extends StatelessWidget {
@@ -54,9 +56,12 @@ class Body extends StatelessWidget {
               ),
             ),
             RoundedButton(text: 'LOGIN', press: () {}),
+            SizedBox(height: size.height*0.015,),
             AlreadyAccountCheck(
               login: true,
-              press: () {},
+              press: () {
+                Navigator.of(context).pushReplacementNamed(SignUpScreen.routeName);
+              },
             ),
           ],
         ),
