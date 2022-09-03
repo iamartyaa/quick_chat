@@ -18,52 +18,59 @@ class Body extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Background(
       child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset(
-              'assets/icons/login.svg',
-              height: size.height * 0.3,
-            ),
-            SizedBox(height: size.height*0.03,),
-            const TextFieldContainer(
-              child: TextField(
-                decoration: InputDecoration(
-                  icon: Icon(
-                    Icons.person,
-                    color: kPrimaryColor,
-                  ),
-                  hintText: 'Your Email',
-                  border: InputBorder.none,
-                ),
+        child: Form(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset(
+                'assets/icons/login.svg',
+                height: size.height * 0.3,
               ),
-            ),
-            const TextFieldContainer(
-              child: TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  icon: Icon(
-                    Icons.lock,
-                    color: kPrimaryColor,
-                  ),
-                  hintText: 'Password',
-                  border: InputBorder.none,
-                  suffixIcon: Icon(
-                    Icons.visibility,
-                    color: kPrimaryColor,
+              SizedBox(
+                height: size.height * 0.03,
+              ),
+              TextFieldContainer(
+                child: TextFormField(
+                  decoration: const InputDecoration(
+                    icon: Icon(
+                      Icons.person,
+                      color: kPrimaryColor,
+                    ),
+                    labelText: 'Your Email',
+                    border: InputBorder.none,
                   ),
                 ),
               ),
-            ),
-            RoundedButton(text: 'LOGIN', press: () {}),
-            SizedBox(height: size.height*0.015,),
-            AlreadyAccountCheck(
-              login: true,
-              press: () {
-                Navigator.of(context).pushReplacementNamed(SignUpScreen.routeName);
-              },
-            ),
-          ],
+              TextFieldContainer(
+                child: TextFormField(
+                  obscureText: true,
+                  decoration: const InputDecoration(
+                    icon: Icon(
+                      Icons.lock,
+                      color: kPrimaryColor,
+                    ),
+                    labelText: 'Password',
+                    border: InputBorder.none,
+                    suffixIcon: Icon(
+                      Icons.visibility,
+                      color: kPrimaryColor,
+                    ),
+                  ),
+                ),
+              ),
+              RoundedButton(text: 'LOGIN', press: () {}),
+              SizedBox(
+                height: size.height * 0.015,
+              ),
+              AlreadyAccountCheck(
+                login: true,
+                press: () {
+                  Navigator.of(context)
+                      .pushReplacementNamed(SignUpScreen.routeName);
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
