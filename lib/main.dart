@@ -7,7 +7,8 @@ import 'package:quick_chat/screens/login/login-screen.dart';
 import 'package:quick_chat/screens/signup/signup_screen.dart';
 import 'package:quick_chat/screens/welcome/welcome_screen.dart';
 
-Future main() async {
+Future<void> main() async {
+  // FirebaseFirestore.initializeApp();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());
