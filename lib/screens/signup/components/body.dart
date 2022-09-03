@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -34,32 +33,33 @@ class _BodyState extends State<Body> {
     String username,
   ) async {
     UserCredential authResult;
+
     try {
       setState(() {
         _isLoading = true;
       });
+      print(_auth.toString());
       authResult = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
 
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(authResult.user!.uid)
-          .set({
-        'username': username,
-        'email': email,
-        'friends': 0,
-      });
+      // await FirebaseFirestore.instance
+      //     .collection('users')
+      //     .doc(authResult.user!.uid)
+      //     .set({
+      //   'username': username,
+      //   'email': email,
+      //   'friends': 0,
+      // });
       setState(() {
         _isLoading = false;
       });
     } on PlatformException catch (err) {
       var message = 'An error occured, please check your credentials';
-
+      print(message);
       if (err.message != null) {
         message = err.message!;
       }
       print(message);
-     
 
       setState(() {
         _isLoading = false;
@@ -74,15 +74,18 @@ class _BodyState extends State<Body> {
 
   void _trySubmit() {
     final isValid = _formKey.currentState!.validate();
-    // FocusScope.of(context).unfocus();
+    FocusScope.of(context).unfocus();
 
     if (isValid) {
       _formKey.currentState!.save();
-      // print(userPassword);
-
+      print(userPassword);
     }
 
-    submitAuthForm(userEmail, userPassword, userName);
+    submitAuthForm(
+      userEmail.toString().trim(),
+      userPassword.toString().trim(),
+      userName.toString().trim(),
+    );
     //once validated we can send to firebase
   }
 
