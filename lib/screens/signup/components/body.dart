@@ -68,7 +68,9 @@ class Body extends StatelessWidget {
               ),
             ),
             RoundedButton(text: 'SIGN UP', press: () {}),
-            SizedBox(height: size.height*0.015,),
+            SizedBox(
+              height: size.height * 0.015,
+            ),
             AlreadyAccountCheck(
               login: false,
               press: () {
@@ -77,15 +79,27 @@ class Body extends StatelessWidget {
               },
             ),
             OrDivider(),
-            SizedBox(height: size.height*0.02,),
-            Container(
-              padding: EdgeInsets.all(14),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(width: 2, color: kPrimaryLightColor),
+            SizedBox(
+              height: size.height * 0.02,
+            ),
+            InkWell(
+              onTap: () {},
+              borderRadius: BorderRadius.circular(29),
+              splashColor: kPrimaryLightColor,
+              focusColor: kPrimaryLightColor,
+              child: Container(
+                padding: EdgeInsets.all(14),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(width: 2, color: kPrimaryLightColor),
+                ),
+                child: SvgPicture.asset(
+                  'assets/icons/google-plus.svg',
+                  width: size.width * 0.06,
+                  color: kPrimaryColor,
+                ),
               ),
-              child: SvgPicture.asset('assets/icons/google-plus.svg',width: size.width*0.06,color: kPrimaryColor,),
-            )
+            ),
           ],
         ),
       ),
