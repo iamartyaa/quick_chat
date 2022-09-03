@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quick_chat/constants.dart';
 import 'package:quick_chat/screens/login/login-screen.dart';
+import 'package:quick_chat/screens/signup/signup_screen.dart';
 import 'package:quick_chat/screens/welcome/welcome_screen.dart';
 
 void main() {
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
       home: WelcomeScreen(),
       routes: {
         LoginScreen.routeName:(context) => LoginScreen(),
+        SignUpScreen.routeName:(context) => SignUpScreen(),
       },
     );
   }
